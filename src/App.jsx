@@ -1,10 +1,14 @@
 import Navbar from "./Components/Navbar";
-import HomePage from "./pages/HomePage";
+import Mainbody from "./Components/Mainbody";
+import Sentiment from "./Components/Sentiment";
+import TrendingCoins from "./Components/TrendingCoins";
 
 function App() {
   return (
     <div className="">
-      <HomePage />
+      <Navbar />
+      <Mainbody />
+      <TrendingCoins />
     </div>
   );
 }

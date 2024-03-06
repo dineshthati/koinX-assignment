@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiArrowRightDoubleLine } from "react-icons/ri";
 import { IoMdArrowDropup } from "react-icons/io";
 import TradingViewChart from "./TradingViewChart";
 import Horizontal_caracel from "./Horizontal-carasel";
 import Performance from "./Performance";
+import Sentiment from "./Sentiment";
+import About_Bitcoin from "./About-Bitcoin";
+import AlreadyHolding from "./AlreadyHolding";
+import Team from "./Team";
+import YouMAyAlsoLike from "./YouMAyAlsoLike";
+import KoinX from "./KoinX";
+import axios from "axios";
 
 const Mainbody = () => {
+  const [coinData, setCoinData] = useState([]);
+
+  const fetchCoinData = async () => {
+    await axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/bitcoin?community_data=true&developer_data=false&sparkline=true
+
+`
+      )
+      .then((res) => {
+        const { data } = res;
+        setCoinData(data);
+        console.log(data);
+        console.log(coinData);
+      });
+  };
+
+  useState(() => {
+    fetchCoinData();
+  }, []);
   return (
-    <div className="bg-[#EEF2F4] w-full py-4 px-3 mb-20">
+    <div className="bg-[#EEF2F4] w-full py-4 px-3 mb-5">
       <div className="flex">
         <p
           className="text-sm flex items-center
@@ -46,9 +73,7 @@ const Mainbody = () => {
           <p className="capitalize mt-6 font-semibold text-sm">
             bitcoin price chart (USD)
           </p>
-          <div className="h-48">
-            <TradingViewChart />
-          </div>
+          <div className="h-48">{/* <TradingViewChart /> */}</div>
         </div>
       </div>
       <div className="horizontal-scroller  overflow-y-scroll ">
@@ -56,6 +81,21 @@ const Mainbody = () => {
       </div>
       <div className="mt-6">
         <Performance />
+      </div>
+      <div>
+        <Sentiment />
+      </div>
+      <div>
+        <About_Bitcoin />
+      </div>
+      <AlreadyHolding />
+      <Team />
+      <YouMAyAlsoLike />
+      <div className="">
+        <YouMAyAlsoLike />
+      </div>
+      <div>
+        <KoinX />
       </div>
     </div>
   );

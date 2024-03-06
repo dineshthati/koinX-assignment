@@ -8,8 +8,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  /* font-family: "Inter"; */
 }
 
 .horizontal-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.card-scrollbar::-webkit-scrollbar {
   display: none;
 }
