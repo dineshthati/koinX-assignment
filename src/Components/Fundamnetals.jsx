@@ -22,7 +22,6 @@ const Fundamnetals = () => {
       yearsAgo === 1 ? "" : "s"
     } ago`;
 
-    console.log(`${formattedDate} (${aboutYearsAgo})`);
     return `${formattedDate} (${aboutYearsAgo})`;
   };
 

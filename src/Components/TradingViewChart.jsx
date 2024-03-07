@@ -16,8 +16,6 @@ function TradingViewWidget() {
       .then((res) => {
         const { data } = res;
         setCoinData(data);
-        console.log(data);
-        console.log(coinData);
       });
   };
 
