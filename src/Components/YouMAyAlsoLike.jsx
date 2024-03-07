@@ -1,63 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CoinDataContext } from "../config/CoinDataContext";
+import { Link } from "react-router-dom";
 
 const YouMAyAlsoLike = () => {
+  const { trending, coinData } = useContext(CoinDataContext);
+
   return (
-    <div className="bg-white p-2">
-      <p className="capitalize pt-3 pb-1 px-2 font-semibold text-base">
+    <div className="bg-white p-2 sm:p-5 sm:px-7 sm:mt-16 ">
+      <p className="capitalize pt-3 pb-1 px-2 font-semibold text-base  sm:text-xl">
         you may also like
       </p>
       <div className="card-scrollbar overflow-x-scroll flex gap-2">
-        <div className="border-[1px] border-gray-300 rounded-lg min-w-40 w-40">
-          <div className="flex p-3 items-center gap-1">
-            <img
-              className="w-4 object-contain rounded-full"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/225px-Bitcoin.svg.png"
-              alt=""
-            />
-            <p className="text-[9px]">BNB</p>
-            <p className="text-green-500 text-[7px] bg-[#EBF9F4]">+0.52%</p>
-          </div>
-          <p className="text-xs ml-3 leading-none">$319.5</p>
-          <img
-            className="w-28 ml-3"
-            src="https://www.investopedia.com/thmb/dhsV4mJjhT6ExvJ-quoTAq9g4aE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Screenshot2023-10-27at11.45.00AM-820401e9ff944b97b6903c15878aab4a.png"
-            alt=""
-          />
-        </div>
-        <div className="border-[1px] border-gray-300 rounded-lg min-w-40 w-40">
-          <div className="flex p-3 items-center gap-1">
-            <img
-              className="w-4 object-contain rounded-full"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/225px-Bitcoin.svg.png"
-              alt=""
-            />
-            <p className="text-[9px]">BNB</p>
-            <p className="text-green-500 text-[7px] bg-[#EBF9F4]">+0.52%</p>
-          </div>
-          <p className="text-xs ml-3 leading-none">$319.5</p>
-          <img
-            className="w-28 ml-3"
-            src="https://www.investopedia.com/thmb/dhsV4mJjhT6ExvJ-quoTAq9g4aE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Screenshot2023-10-27at11.45.00AM-820401e9ff944b97b6903c15878aab4a.png"
-            alt=""
-          />
-        </div>
-        <div className="border-[1px] border-gray-300 rounded-lg min-w-40 w-40">
-          <div className="flex p-3 items-center gap-1">
-            <img
-              className="w-4 object-contain rounded-full"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/225px-Bitcoin.svg.png"
-              alt=""
-            />
-            <p className="text-[9px]">BNB</p>
-            <p className="text-green-500 text-[7px] bg-[#EBF9F4]">+0.52%</p>
-          </div>
-          <p className="text-xs ml-3 leading-none">$319.5</p>
-          <img
-            className="w-28 ml-3"
-            src="https://www.investopedia.com/thmb/dhsV4mJjhT6ExvJ-quoTAq9g4aE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Screenshot2023-10-27at11.45.00AM-820401e9ff944b97b6903c15878aab4a.png"
-            alt=""
-          />
-        </div>
+        {trending.map((coin) => {
+          return (
+            <Link to={`/${coin?.item?.id}`}>
+              <div
+                key={coin?.item?.coin_id}
+                className="sm:min-w-72 sm:h-48 border-[1px] border-gray-300 sm:px-4 sm:py-2 rounded-lg min-w-40 w-40"
+              >
+                <div className="flex p-3 items-center gap-1 sm:gap-2 ">
+                  <img
+                    className="w-4 sm:w-7 object-contain rounded-full"
+                    src={coin?.item?.small}
+                  />
+                  <p className="text-[9px] sm:text-xl">{coin?.item?.name}</p>
+                  <p className="text-green-500 text-[7px] sm:text-sm bg-[#EBF9F4] ">
+                    {coin?.item?.data?.price_change_percentage_24h?.usd.toFixed(
+                      2
+                    )}
+                    %
+                  </p>
+                </div>
+                <p className="text-xs ml-3 leading-none sm:text-xl">
+                  {coin?.item?.data?.price}
+                </p>
+
+                <img
+                  className="w-28 ml-3 sm:w-44"
+                  src={coin?.item?.data?.sparkline}
+                />
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

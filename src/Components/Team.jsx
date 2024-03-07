@@ -22,9 +22,9 @@ const Team = () => {
     },
   ];
   return (
-    <div className="p-2 bg-white mt-4 rounded-lg ">
-      <p className="font-semibold text-xl py-2 ">Team</p>
-      <p>
+    <div className="p-2 bg-white mt-4 rounded-lg sm:p-5 sm:px-6 sm:mt-5">
+      <p className="font-semibold text-xl py-2 sm:text-3xl ">Team</p>
+      <p className="sm:mt-3">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, at
         inventore placeat numquam voluptas cum rem tenetur minima quibusdam,
         delectus nostrum optio
@@ -34,14 +34,21 @@ const Team = () => {
         return (
           <div
             key={index}
-            className="flex flex-col rounded-lg  p-2 mt-5 bg-[#E8F4FD] items-center"
+            className="sm:flex-row flex flex-col rounded-lg  p-2 mt-5 bg-[#E8F4FD] items-center"
           >
-            <img className="w-24 h-24 rounded-lg" src={item.img} alt="" />
-            <p className="capitalize mt-2 font-semibold text-sm">{item.name}</p>
-            <p className="capitalize text-[11px] text-[#98A2B0] font-semibold mt-1">
-              designation here
+            <div className="sm:flex sm:items-center sm:justify-center sm:flex-col sm:w-[20%]">
+              <img className="w-24 h-24 rounded-lg" src={item.img} alt="" />
+              <p className="capitalize mt-2 font-semibold text-sm sm:text-sm">
+                {item.name}
+              </p>
+              <p className="capitalize text-[11px] text-[#98A2B0] font-semibold mt-1 sm:text-xs">
+                designation here
+              </p>
+            </div>
+
+            <p className="text-[13px] mt-3 sm:text-sm leading-relaxed sm:w-[80%]">
+              {item.content}
             </p>
-            <p className="text-[13px] mt-3">{item.content}</p>
           </div>
         );
       })}
