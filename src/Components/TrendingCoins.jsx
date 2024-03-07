@@ -31,11 +31,8 @@ const TrendingCoins = () => {
       {trending.map(
         (coin, index) =>
           index < 3 && (
-            <Link to={`/${coin?.item?.id}`}>
-              <div
-                key={coin.name}
-                className="flex items-center justify-between"
-              >
+            <Link to={`/${coin?.item?.id}`} key={coin.name}>
+              <div className="flex items-center justify-between">
                 <div className="flex gap-1 items-center mt-3 mb-3">
                   <img
                     className="w-6 rounded-full"

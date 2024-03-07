@@ -33,7 +33,7 @@ const Mainbody = () => {
 
   useEffect(() => {
     fetchCoinData();
-  }, []);
+  }, [coinId]);
 
   return (
     <div className="bg-[#EEF2F4] w-full py-4 px-3 sm:px-0 mb-5 ">

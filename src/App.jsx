@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Mainbody from "./Components/Mainbody";
-import Sentiment from "./Components/Sentiment";
-import TrendingCoins from "./Components/TrendingCoins";
+import NotFound from "./Components/NotFound";
 
 function App() {
   return (
@@ -29,6 +28,7 @@ function RouterContent() {
       <Navbar />
       <Routes>
         <Route path="/:coinId" element={<Mainbody />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

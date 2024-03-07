@@ -13,11 +13,8 @@ const YouMAyAlsoLike = () => {
       <div className="card-scrollbar overflow-x-scroll flex gap-2">
         {trending.map((coin) => {
           return (
-            <Link to={`/${coin?.item?.id}`}>
-              <div
-                key={coin?.item?.coin_id}
-                className="sm:min-w-72 sm:h-48 border-[1px] border-gray-300 sm:px-4 sm:py-2 rounded-lg min-w-40 w-40"
-              >
+            <Link to={`/${coin?.item?.id}`} key={coin?.item?.coin_id}>
+              <div className="sm:min-w-72 sm:h-48 border-[1px] border-gray-300 sm:px-4 sm:py-2 rounded-lg min-w-40 w-40">
                 <div className="flex p-3 items-center gap-1 sm:gap-2 ">
                   <img
                     className="w-4 sm:w-7 object-contain rounded-full"

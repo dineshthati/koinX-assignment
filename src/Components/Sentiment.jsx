@@ -22,7 +22,7 @@ const Sentiment = () => {
           analyst estimates
         </p>
         <div className="flex  mt-2 gap-2 sm:gap-10 sm:mt-5">
-          <div className="flex-[0.4]  sm:w-[15%]  rounded-full h-32 bg-[#EBF9F4] flex items-center justify-center ">
+          <div className="flex-[0.4]  sm:h-48  rounded-full h-32 bg-[#EBF9F4] flex items-center justify-center ">
             <p className="  text-[#0FBA83]   text-4xl font-semibold sm:font-medium sm:text-5xl">
               {coinData?.sentiment_votes_up_percentage?.toFixed()}
             </p>
